@@ -80,7 +80,7 @@ vector<int> LinuxParser::Pids() {
 // TODO(Done): Read and return the system memory utilization
 float LinuxParser::MemoryUtilization() {
   string path = kProcDirectory + kMeminfoFilename;
-  int memFree = GetDataFromPath(path, filterMemTotalString);
+  int memFree = GetDataFromPath(path, filterMemFreeString);
 
   int memTotal = GetDataFromPath(path, filterMemTotalString);
   int memUtil = memTotal - memFree;
