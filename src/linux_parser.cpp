@@ -104,7 +104,7 @@ long LinuxParser::Jiffies() {
   return num_jiffies;
 }
 
-// TODO: Read and return the number of active jiffies for a PID
+// TODO(Done): Read and return the number of active jiffies for a PID
 // REMOVE: [[maybe_unused]] once you define the function
 long LinuxParser::ActiveJiffies(int pid) {
   return GetProcessStat(pid, ProcessUtilStates::utime_) +
@@ -214,7 +214,7 @@ string LinuxParser::Ram(int pid) {
 // REMOVE: [[maybe_unused]] once you define the function
 string LinuxParser::Uid(int pid) { return User(pid); }
 
-// TODO: Read and return the user associated with a process
+// TODO(Done): Read and return the user associated with a process
 // REMOVE: [[maybe_unused]] once you define the function
 string LinuxParser::User(int pid) {
   string line, uid;
