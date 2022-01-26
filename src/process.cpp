@@ -11,6 +11,7 @@ using std::string;
 using std::to_string;
 using std::vector;
 
+#define CLOCK_TICKS sysconf(_SC_CLK_TCK)
 // TODO(Done): Return this process's ID
 int Process::Pid() const { return pid_; }
 
@@ -19,8 +20,8 @@ float Process::CpuUtilization() const {
     long total_time = LinuxParser::ActiveJiffies(Pid());
     long uptime = LinuxParser::UpTime();
     long starttime = LinuxParser::GetProcessStat(Pid(), LinuxParser::ProcessUtilStates::starttime_);
-    long seconds = uptime - ((float)starttime / sysconf(_SC_CLK_TCK));
-    float cpu_usage = (float)(((float)total_time / sysconf(_SC_CLK_TCK)) / seconds);
+    long seconds = uptime - ((float)starttime / CLOCK_TICKS);
+    float cpu_usage = (float)(((float)total_time / CLOCK_TICKS) / seconds);
     //std::cout<<"cpu_usage"<<cpu_usage<<"\n";
     return cpu_usage;
 }
@@ -39,7 +40,7 @@ string Process::User() {
 }
 
 // TODO(Done): Return the age of this process (in seconds)
-long int Process::UpTime() { return LinuxParser::UpTime(Pid()); }
+long int Process::UpTime() { return LinuxParser::UpTime() - LinuxParser::UpTime(Pid())/CLOCK_TICKS; }
 
 // TODO(Done): Overload the "less than" comparison operator for Process objects
 // REMOVE: [[maybe_unused]] once you define the function
