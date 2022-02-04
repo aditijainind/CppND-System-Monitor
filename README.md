@@ -1,4 +1,8 @@
 # CppND-System-Monitor
+Completed nanodegree project simulating the htop process viewer for linux showing the CPU utilization and Process utilization.
+
+
+-----------------------------------------------------------------------------------------------------------------------------
 
 Starter code for System Monitor Project in the Object Oriented Programming Course of the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). 
 
